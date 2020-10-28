@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MVVM Sample App \n Saeed Bahari</string>
+
+    <string name="movies_loading_string">Loading List</string>
+    <string name="movies_loading_retry">Retry</string>
+    <string name="movies_loading_retry_message">Server is Busy</string>
+    <string name="movies_list_is_empty">No Movie Found for this Search</string>
+
+    <string name="error_device_not_connected_to_internet">Device Not Connected to Internet</string>
+</resources>
