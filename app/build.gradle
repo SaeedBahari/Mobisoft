@@ -83,8 +83,9 @@ dependencies {
     // Room components
     implementation "androidx.room:room-runtime:$version_room"
     implementation "androidx.room:room-ktx:$version_room"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:$version_room"
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Okhttp3
     implementation "com.squareup.okhttp3:okhttp:$version_okhttp3_version"

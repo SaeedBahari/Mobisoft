@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import ir.saeedbahari.mobisoft.database.MovieDatabase
 import ir.saeedbahari.mobisoft.database.dataModels.SearchItem
 import ir.saeedbahari.mobisoft.repository.MoviesListRepository
 import kotlinx.coroutines.CoroutineScope
@@ -24,13 +25,13 @@ class MainListVM(
         get() = _responselist
     fun getList(apiKey:String ="4f588b70",searchquery: String) {
         _responselist.postValue(moviesRepository.getSearchResultStream(apiKey, searchquery).cachedIn(viewModelScope))
-
     }
 
     class MainListVMFactory(private val mApplication: Application) :
         ViewModelProvider.NewInstanceFactory() {
         private val mRepository: MoviesListRepository =
-            MoviesListRepository()
+            MoviesListRepository(mApplication)
+//        private val mDBRepository: MovieDatabase
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return MainListVM(
@@ -38,6 +39,10 @@ class MainListVM(
                 mRepository
             ) as T
         }
+//        init {
+//            val movieDao = MovieDatabase.getDatabase(mApplication).movieDao()
+//            mDBRepository = MovieDatabase(movieDao, Applications.context)
+//        }
     }
 
     override fun onCleared() {
